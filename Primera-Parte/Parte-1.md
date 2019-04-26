@@ -6,7 +6,7 @@
 
 #### Grupo 3
   * 14859/2 - Adrogué Benas María Noel
-  * \*\*\*\*\*/* - Farinella Robertino
+  * 15190/3 - Farinella Robertino
 
 
 #### Referencias
@@ -94,4 +94,14 @@
 
 #### Código
 
-![](/home/mnabenas/Descargas/carbon.png)
+<img src="/home/mnabenas/Descargas/carbon.png"  width="400" height="300">
+
+|  			Identificador 		 |     			Tipo 		    |  			r-valor 		 |  			alcance 		 |  			tiempo de vida 		 |
+|:---------------:|:------------:|:---------:|:---------:|:----------------:|
+|   			a (línea 4) 		  |  			automática 		 |     			10 		   |    			4-17 		  |       			3-23 		      |
+|   			b (línea 4) 		  |  			automática 		 |     			10 		   |    			4-18 		  |       			3-23 		      |
+|   			a (línea 17) 		 |  			automática 		 |     			1 		    |   			17-23 		  |       			17-23 		     |
+|   			b (línea 18) 		 |   			estática 		  |    			100 		   |   			18-23 		  |       			18-23 		     |
+
+Tanto a y b declaradas en la la línea 4 son variables globales. Por otro lado, a y b declaradas en ```func_1()``` son variables locales e incluso b es declarada como estática. Cuando ```func_1()``` es llamada por primera vez toma el valor 100 (r-valor al momento de declaración) y a toma el valor 1, luego son aumentadas en 1 e impresas; sin embargo cuando ```func_1()``` es llamada nuevamente, a vuelve a tomar valor 1 pero b retiene su valor anterior de 101 dado que es estática y esto hace que retenga su valor entre llamadas a la función ```func_1()```, terminando con valor 102. No obstante, esto no extiende su alcance, b es sólo válida dentro de su función.
+También notar que en C el alcance de una variable es estática y por lo tanto a toma el valor 1 en vez de 10 ya que se encuentra dentro del bloque de ```func_1()``` y por lo tanto, esta declaración toma prioridad sobre la global.
