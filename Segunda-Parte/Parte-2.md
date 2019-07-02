@@ -114,3 +114,75 @@ También notar que en C el alcance de una variable es estática y por lo tanto a
 ### C.
 
 > Realice una tabla comparativa permitiendo visualizar las diferencias más relevantes respecto del sistema de tipos de los lenguajes asignados. Justifique las características mencionadas con ejemplos de código (al menos para 3 de las características). ​ *Concepto de Lenguaje fuertemente tipado*
+
+<style type="text/css">
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+td {
+   width: 25%;
+}
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>C</th>
+            <th>Matlab</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan=2>Tipado</th>
+        </tr>
+        <tr>
+            <td>
+              <p>C es un lenguaje de tipado estatico y fuerte. Esto tiene diferentes implicaciones en el lenguaje. La primera, y probablemente la mas notable, es que en la declaracion de una variable, el programador debe declarar explicitamente el tipo de la variable. El tipo de la variable no cambia durante la ejecucion, solo el tipo del valor mediante conversiones, pero la variable se mantiene del mismo tipo.</p>
+              <p>Como la ligadura se realiza durante la compilacion, el tipado estatico elimina la necesidad de repetir el cheque de tipos cada vez que el programa es ejecutado. Sin embargo, C no es tan flexible en operaciones y converciones implicitas permitidas entre tipos como otros lenguajes.</p>
+            </td>
+            <td>
+            <p>MATLAB, por el contrario, es un lenguaje dinamico y debilmente tipado, por lo tanto, uno no tiene que explicitamente declarar el tipo de una variable. La declaracion de la misma variable en 2 tipos distintos es perfectamente aceptable, por ejemplo <code>x = 5; x = 'foo'</code>.</p>
+            <p>Por otro lado, ya que los valores tienen tipos, no las variables, el tipo de la variable es dado por su valor y puede cambiar constantemente, al ser dinamicamente tipado, y por lo tanto la ligadura entidad/variable se realiza durante su ejecucion. Esto hace de MATLAB un lenguaje mas flexible pero a su vez mas propenso a errores</p></td>
+        </tr>
+        <tr>
+            <th colspan=2>Tipos de Datos</th>
+        </tr>
+        <tr>
+            <td>En C encontramos distintos tipos de datos. Por un lado, las constantes, las cuales pueden ser numericos, de caracter, flotantes, etc. Luego, existen los tipos basicos (int, double, float, etc.) y por otro los tipos derivados, construidos a partir de los tipos fundamentales (arreglos, funciones, apuntadores, estructuras, uniones, etc.). El tipo void se usa como el tipo regresado por funciones que no generan un valor.</td>
+            <td><p>MATLAB tiene 15 tipos de datos fundamentales: 8 tipos de enteros (de acuerdo a su almacenamiento y precision),single, double, logical, char, cell, structure y function. Todos estos elementos son arreglos, desde un minimo de 0x0 en dimensiones, hasta arreglos n-dimensionales, por lo que se dice que en Matlab <i>"Todo es un arreglo".</i></p>
+            <p>MATLAB tambien posee clases creadas por el usuario. Desde string, siendo arreglos de chars hasta matrices de double, arreglos de tipo cell y timetables. Como hemos mencionado anteriormente, estos tipos pueden variar constantemente durante la ejecucion del programa.</p></td>
+        </tr>
+        <tr>
+            <th colspan=2>Conversion</th>
+        </tr>
+        <tr>
+          <td>En C la coversion puede ser de 2 tipos: conversion implicita o explicita.
+            <p>En la coversion implicita, la conversion del tipo de origen(derecha del programador) al tipo destino(izquierda del programador) se realiza de manera automatica. Si el rango de destino es mayor al de origen, se denomina conversion ancha, cuando el rango de destino es menor, se denomina conversion estrecha. El compilador realiza conversiones anchas sin ningun problema, pero al realizar conversiones estrechas puede ocurrir perdida de precision (por ejemplo de tipo double a tipo entera se producira un truncamiento.)</p>
+            <p>En la conversion explicita, el programador indica explicitamente el tipo destino de la conversion, se dice que el programador <i>castea</i> a tipo destino. Ejemplos de esto es de double a entero, de char a entero, de entero a apuntador, etc. Es importante notar que, si el casteo se realiza sobre una variable, primero se copia el valor de la variable origen y luego realiza la conversion al tipo destino, para luego asignarlo a la variable destino en caso de haber una, dejando sin modificar el tipo de la variable origen, manteniendo asi su tipado fuerte y estatico.</p></td>
+          <td>Al igual que C, la conversion en MATLAB tambien puede ser explicita o implicita.
+          <p>La conversion implicita se realiza cuando se realiza concatenacion o asignacion suscripta en arreglos, ya que todos sus elementos deben de ser del mismo tipo. En este caso, MATLAB sigue ciertas reglas para entender cual es el tipo destino y cual el origen. En caso de concatenacion, los tipos definidos por el usuario tienen son dominantes sobre predefinidos como double, si no hay prioridad entre los elementos, se utiliza el tipo del dato mas a la izquierda. En caso de asignaciones suscriptas, siempre se utiliza el tipo del dato de la izquierda.</p>
+          <p>La conversion explicita, a diferencia de C, no se realiza con una forma de casteo general (en caso de C <i>(tipoDestino)</i>) sino que hay distintas funciones de casteo para distintos pares de tipos de datos. Ejemplos de esto es <code>cellstr int2str bin2dec array2table</code>, etc. Esto permite muchos mas casos explicitos que los provistos mediante casteo explicito en C donde muchas conversiones explicitas no se encuentran definidas.</p></td>
+        </tr>
+        <tr>
+            <th colspan=2>Inferencia de Tipo</th>
+        </tr>
+        <tr>
+            <td>texto C</td>
+            <td>texto Matlab</td>
+        </tr>
+        <tr>
+            <th colspan=2>Polimorfismo</th>
+        </tr>
+        <tr>
+            <td>texto C</td>
+            <td>texto Matlab</td>
+        </tr>
+    </tbody>
+</table>
