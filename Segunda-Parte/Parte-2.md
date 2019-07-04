@@ -34,10 +34,7 @@
 - **Declaración de Variables**
 
   - C
-    En C se deben declarar todas las variables antes de su uso, generalmente al principio de la función y antes de cualquier proposición ejecutable, esto se denomina *tipado estático*. Una variable en C consta de un nombre de tipo, de los cuales C provee muchos, seguido por una lista de variables, por ejemplo:
-    ```
-      int aux;
-    ```
+    En C se deben declarar todas las variables antes de su uso, generalmente al principio de la función y antes de cualquier proposición ejecutable, esto se denomina *tipado estático*. Una variable en C consta de un nombre de tipo, de los cuales C provee muchos, seguido por una lista de variables, por ejemplo ``` int aux```.
 
   - Matlab
     Al contrario de C, Matlab utiliza un solo tipo de variable, el arreglo. Este arreglo puede ser unidimensional, como un vector e incluso un valor (en caso de poseer un solo elemento), o multidimensional, como una matriz.
@@ -50,10 +47,12 @@
 - **Asignación y cambio de variables a distintos tipos**
 
   - C
-    En este lenguaje, una variable no puede cambiar de tipo, razón por la cual querer asignar un string a una variable de tipo entero, por ejemplo, generará un error. Uno puede realizar, sin embargo, lo que se denomina un *casting* para poder utilizarla como si fuera de otro tipo. Un *casteo* crea una copia en el tipo indicado de la variable, no modifica la variable original.
+    En este lenguaje, una variable no puede cambiar de tipo, razón por la cual querer asignar un string a una variable de tipo entero, por ejemplo, generará un error. Uno puede realizar, sin embargo, lo que se denomina un *casting* para poder utilizarla como si fuera de otro tipo. Un *casteo* crea una copia en el tipo indicado de la variable, no modifica la variable original. El operador de asignación estándar “=” simplemente almacena el valor de su operando derecho en la variable especificada por su operando izquierdo. Al igual que con todos los operadores de asignación, el operando de la izquierda (comúnmente denominado "lvalue") no puede ser un valor literal o constante.
+    Los operadores de asignación compuesta realizan una operación que involucra los operandos izquierdo y derecho, y luego asignan la expresión resultante al operando izquierdo. Por ejemplo: ```+=``` Agrega los dos operandos juntos, y luego asigna el resultado de la adición al operando izquierdo. ```i++/i--``` incrementa o decrementa en 1 el valor de i y se lo asigna.
 
   - Matlab
-    Por el contrario en Matlab una variable, al ser todos arreglos, puede cambiar de tipo de elemento en cualquier momento. Una matriz unidimensional de enteros puede pasar a ser una matriz multidimensional de caracteres sin ninguna sintaxis particular. No puede, eso si, combinar operaciones de elementos numéricos con otro tipo de elementos o comparar dos arreglos de distintas dimensiones (a no ser que uno sea un arreglo de un elemento, el cual se comporta como un solo valor).
+    Al igual que en C, la asignación es con el ```=``` pero en el caso de M es la única forma de asignación, o sea, que no permite una asignación compuesta como en C.
+    En Matlab una variable, al ser todos arreglos, puede cambiar de tipo de elemento en cualquier momento. Una matriz unidimensional de enteros puede pasar a ser una matriz multidimensional de caracteres sin ninguna sintaxis particular. No puede, eso si, combinar operaciones de elementos numéricos con otro tipo de elementos o comparar dos arreglos de distintas dimensiones (a no ser que uno sea un arreglo de un elemento, el cual se comporta como un solo valor).
 
 - **Signatura o Firma de una función**
 
@@ -67,7 +66,7 @@
 
 #### Semántica dinámica
 
-  Matlab, o mas específicamente lenguaje M, es un lenguaje interpretado, esto quiere decir que las sentencias en M se ejecutan instantáneamente. Debido a esto, todo tipo de chequeo o error es de tipo dinámico, ya que no hay una compilación a priori de la ejecución del programa y por lo tanto, compatibilidad de tipos, indices fuera de límites, etc. se realizan en ejecución, a diferencia de C el cual es un lenguaje compilado y por lo tanto estos chequeos se realizan en compilación.
+  Matlab, o mas específicamente lenguaje M, es un lenguaje interpretado, esto quiere decir que las sentencias en M se ejecutan instantáneamente. Debido a esto, todo tipo de chequeo o error es de tipo dinámico, ya que no hay una compilación a priori de la ejecución del programa y por lo tanto, compatibilidad de tipos, indices fuera de límites, etc. se realizan en ejecución, a diferencia de C el cual es un lenguaje compilado y por lo tanto muchos de los chequeos de errores se realiza durante la compilacion. Esto no garantiza que no puedan ocurrir errores durante la ejecucion, como los mencionados anteriormente.
 
   - **Indexación**
     - C
@@ -98,17 +97,19 @@
 
 #### Código
 
-<img src="/home/mnabenas/Descargas/carbon.png"  width="400" height="300">
+<img src="/home/mnabenas/Descargas/carbon (5).png"  width="400" height="300">
 
 |  			Identificador 		 |     			Tipo 		    |  			r-valor 		 |  			alcance 		 |  			tiempo de vida 		 |
 |:---------------:|:------------:|:---------:|:---------:|:----------------:|
-|   			a (línea 4) 		  |  			automática 		 |     			10 		   |    			4-17 		  |       			3-23 		      |
-|   			b (línea 4) 		  |  			automática 		 |     			10 		   |    			4-18 		  |       			3-23 		      |
-|   			a (línea 17) 		 |  			automática 		 |     			1 		    |   			17-23 		  |       			17-23 		     |
-|   			b (línea 18) 		 |   			estática 		  |    			100 		   |   			18-23 		  |       			todo el programa 		     |
+|   			a (línea 5) 		  |  			automática 		 |     			0 		   |    			6-28 		  |       			6-28 		      |
+|   			b (línea 5) 		  |  			automática 		 |     			0.0 		   |    			6-28 		  |       			6-28 		      
+|   			pos (línea 8) 		  |  			automática 		 |     			basura 		   |    			9-19 		  |       			9-19		      |
+|   			a (línea 22) 		 |  			automática 		 |     			basura 		    |   			23-28 		  |       			23-28		     |
+|   			b (línea 23) 		 |   			estática 		  |    			0 		   |   			24-28		  |       			todo el programa 		     |
 
-Tanto a y b declaradas en la línea 4 son variables globales. Por otro lado, a y b declaradas en ```func_1()``` son variables locales e incluso b es declarada como estática. Cuando ```func_1()``` es llamada por primera vez toma el valor 100 (r-valor al momento de declaración) y a toma el valor 1, luego son aumentadas en 1 e impresas; sin embargo cuando ```func_1()``` es llamada nuevamente, a vuelve a tomar valor 1 pero b retiene su valor anterior de 101 dado que es estática y esto hace que retenga su valor entre llamadas a la función ```func_1()```, terminando con valor 102. No obstante, esto no extiende su alcance, b es sólo válida dentro de su función.
+Tanto a y b declaradas en la línea 5 son variables globales. Por otro lado, a y b declaradas en ```func_1()``` son variables locales e incluso b es declarada como estática. Cuando ```func_1()``` es llamada por primera vez, b toma el valor 100 (r-valor al momento de declaración) y a toma el valor 1, luego son aumentadas en 1 e impresas; sin embargo cuando ```func_1()``` es llamada nuevamente, a vuelve a tomar valor 1 pero b retiene su valor anterior de 101 dado que es estática y esto hace que retenga su valor entre llamadas a la función ```func_1()```, terminando con valor 102. No obstante, esto no extiende su alcance, b es sólo válida dentro de su función.
 También notar que en C el alcance de una variable es estática y por lo tanto a toma el valor 1 en vez de 10 ya que se encuentra dentro del bloque de ```func_1()``` y por lo tanto, esta declaración toma prioridad sobre la global.
+Por otro lado la variable pos es un puntero el cual va variando su memoria alocada a lo largo de la ejecucion del programa. Primero tiene basura, luego apunta a la direccion de a, al realizar un free libera su memoria y luego aloca memoria para un double y apunta a la direccion de memoria de b.
 
 
 ## Segunda Parte
@@ -283,7 +284,7 @@ El manejo del desbordamiento, errores de division y otras condiciones de error d
 Cuando ocurre subsecuentemente una señal sig, la señal se regresa a su comportamiento predeterminado, luego se llama a la funcion manejadora. Si este regresa, la ejecucion continuara donde se encontraba cuando ocurrio la excepcion.
 Para enviar la señal sig al programa se utiliza la funcion ```int raise(int sig)``` la cual devuelve 0 si fue exitoso o cualquier otro valor en caso contrario.
 
-### D.
+### E.
 > Realice una conclusión exponiendo las diferencias, características, virtudes y defectos de los lenguajes asignados.
 
 C y Matlab son 2 lenguajes sumamente distintos. Desde caracteristicas como su tipado y su ligadura, hasta su manejo de excepciones. Por estas razones son lenguajes que son utilizados para cosas distintas. Si bien los 2 son generalmente utilizados en el ambito cientifico, C tambien es utilizado en la informatica de manera general, lo cual no puede decirse de Matlab.
@@ -295,3 +296,6 @@ C por otro lado esta preparado para manejar una alta cantidad de problemas varia
 Al ser un lenguaje tan general pero con altas restricciones por ser fuertemente tipado y estatico, lo hace dificil de entender y la escritura de codigo, si no se realiza con mucho cuidado y prolijidad, puede resultar comprensivamente dificil, ademas de que puede resultar en varios errores que pueden estar o no manejados adecuadamente. Al no poseer procesos automaticos como puede ser la recoleccion de basura , programas en C pueden tambien pueden ser costosos en cuanto a recursos si no son atendidos de manera regular. Sin embargo, por todas sus ventajas es utilizado en la creacion de nuevos sistemas operativos por ser un lenguaje de gran entendimiento con codigo de bajo nivel o codigo maquina.
 
 Los dos lenguajes tienen prioridades distintas. C pone en prioridad la versatilidad del codigo y deja en un segundo plano las ventajas al programador en cuanto a legibilidad y facilidades para el mismo. Matlab por otro lado se centra en el programador y en ofrecer herramientas para facilitar la comprension y el correcto uso del lenguaje en un ambito mas limitado que el de C.
+
+### F.
+> Realice una conclusión mencionando los aportes que le generó la realización del trabajo como grupo.
