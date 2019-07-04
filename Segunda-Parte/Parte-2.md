@@ -167,22 +167,23 @@ td {
             <p>En la coversion implicita, la conversion del tipo de origen(derecha del programador) al tipo destino(izquierda del programador) se realiza de manera automatica. Si el rango de destino es mayor al de origen, se denomina conversion ancha, cuando el rango de destino es menor, se denomina conversion estrecha. El compilador realiza conversiones anchas sin ningun problema, pero al realizar conversiones estrechas puede ocurrir perdida de precision (por ejemplo de tipo double a tipo entera se producira un truncamiento.)</p>
             <p>En la conversion explicita, el programador indica explicitamente el tipo destino de la conversion, se dice que el programador <i>castea</i> a tipo destino. Ejemplos de esto es de double a entero, de char a entero, de entero a apuntador, etc. Es importante notar que, si el casteo se realiza sobre una variable, primero se copia el valor de la variable origen y luego realiza la conversion al tipo destino, para luego asignarlo a la variable destino en caso de haber una, dejando sin modificar el tipo de la variable origen, manteniendo asi su tipado fuerte y estatico.</p></td>
           <td>Al igual que C, la conversion en MATLAB tambien puede ser explicita o implicita.
-          <p>La conversion implicita se realiza cuando se realiza concatenacion o asignacion suscripta en arreglos, ya que todos sus elementos deben de ser del mismo tipo. En este caso, MATLAB sigue ciertas reglas para entender cual es el tipo destino y cual el origen. En caso de concatenacion, los tipos definidos por el usuario tienen son dominantes sobre predefinidos como double, si no hay prioridad entre los elementos, se utiliza el tipo del dato mas a la izquierda. En caso de asignaciones suscriptas, siempre se utiliza el tipo del dato de la izquierda.</p>
+          <p>La conversion implicita se realiza cuando se realiza concatenacion o asignacion suscripta en arreglos, ya que todos sus elementos deben de ser del mismo tipo. En este caso, MATLAB sigue ciertas reglas para entender cual es el tipo destino y cual el origen. En caso de concatenacion, los tipos definidos por el usuario son dominantes sobre predefinidos como double, si no hay prioridad entre los elementos, se utiliza el tipo del dato mas a la izquierda. En caso de asignaciones suscriptas, siempre se utiliza el tipo del dato de la izquierda.</p>
           <p>La conversion explicita, a diferencia de C, no se realiza con una forma de casteo general (en caso de C <i>(tipoDestino)</i>) sino que hay distintas funciones de casteo para distintos pares de tipos de datos. Ejemplos de esto es <code>cellstr int2str bin2dec array2table</code>, etc. Esto permite muchos mas casos explicitos que los provistos mediante casteo explicito en C donde muchas conversiones explicitas no se encuentran definidas.</p></td>
         </tr>
         <tr>
             <th colspan=2>Inferencia de Tipo</th>
         </tr>
         <tr>
-            <td>texto C</td>
-            <td>texto Matlab</td>
+            <td><p>C no permite inferencia de tipos debido a que siempre debe estar definido el tipo de un variable. La inferencia de tipos se refiere a la posibilidad de lenguajes de detectar o inferir el tipo de una variable o funcion analizando su contexto, y esto no es posible en C. Lo es en lenguajes derivados como C++ o C# gracias a variables de tipo var o auto.</td>
+            <td>En MATLAB la inferencia de tipo es algo constantemente presente. Cuando declaramos una funcion por ejemplo, nunca se expresa el tipo de retorno o el tipo de los argumentos que esa funcion recibe, sin embargo el lenguaje puede inferir el resultado de esa funcion. Difiere de la conversion implicita en que justamente no se utilizan los tipos de argumentos de los argumentos para saber el tipo de la funcion. Al ser MATLAB dinamico, tambien complica la distincion entre ambas, la inferencia es mas distintiva en lenguajes estaticos.</p>
+            <p>La inferencia tiene sus desventajas, sin embargo. Desde la posibilidad de que haya errores en la inferencia y la dificultad de encontrar dichos errores, hasta la falta de comprension de lo que se esta haciendo en una funcion dependiendo de sus argumentos.</p></td>
         </tr>
         <tr>
             <th colspan=2>Polimorfismo</th>
         </tr>
         <tr>
-            <td>texto C</td>
-            <td>texto Matlab</td>
+            <td>Si bien C no soporta polimorfismo de manera directa, hay ciertas formas de simular polimorfismo en C mediante punteros a funciones y macros.</td>
+            <td>MATLAB por otro lado si soporta polimorfismo. Utiliza clases de tipo abstractas para poder sobrecargar funcionalidades y heredar caracteristicas en comun para grupos de objetos. Tambien se puede realizar sobrecarga de funciones directamente mediante la definicion de funciones con la misma definicion pero distintas implementaciones.</td>
         </tr>
     </tbody>
 </table>
