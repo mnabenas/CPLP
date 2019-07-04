@@ -187,3 +187,99 @@ td {
         </tr>
     </tbody>
 </table>
+
+#### Ejemplos de Codigo
+
+**Tipado**
+
+```
+int main() {
+  int i = 0;
+  double b = 1.5;
+  int result = i + b;
+  return 0;
+}
+```
+Notese como en cada variable, incluso la funcion ```main()```, se encuentra expresado su tipo.
+
+```
+function avg = average(nums)
+global TOTAL
+avg = sum(nums)/TOTAL;
+end
+```
+En MATLAB no se declaran tipos, en el ejemplo incluso se denota una variable global, pero no se dice que tipo es.
+
+
+**Tipos de Datos**
+```
+void imprimir(const char *str){
+  printf("%s",str);
+}
+```
+Aqui podemos ver varios ejemplos de tipos de datos en C, desde string que es una cadena de caracteres, hasta el tipo void  de la funcion y puntero a la cadena str.
+
+```
+str = 'Hello World!'
+n = 2345
+d = double(n)
+un = uint32(789.50)
+rn = 5678.92347
+c = int32(rn)
+```
+Varios tipos de datos en MATLAB, esto imprimira:
+```
+str = Hello World!
+n =  2345
+d =  2345
+un = 790
+rn = 5678.9
+c =  5679
+```
+Recordar que todos estos tipos son arreglos de 1 elemento, a excepcion de str que es un arreglo de caracteres.
+
+**Conversion**
+
+*Conversion en C*
+```
+#include <stdio.h>
+int main()
+{
+    int x = 10.0;    // int x
+    char y = 'a';  // character c
+
+    // Valor ascii de 'a' es 97
+    x = x + y;
+
+    // x es convertido implicitamente a float
+    float z = x + 1.0;
+
+    // x es convertido explicitamente de int a double
+    double sum = (double)x + 10.0;
+
+    printf("x = %d, z = %f, sum = %d", x, z, sum);
+    return 0;
+}
+```
+Esto imprimira: ```x = 107, z = 108.000000, sum = 118.000000```
+
+*Conversion en MATLAB*
+```
+chr = '37.294e-1';
+
+% conversion explicita de string a valor numerico
+val = str2num(chr)
+A = [1.0 2.0 4.0];
+B = 3;
+% conversion implicita de int a double
+A(2) = B;
+```
+Esto imprimira:
+ ```
+val =
+
+    3.7294
+A =
+
+    1.0   3.0   4.0
+```
