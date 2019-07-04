@@ -11,13 +11,15 @@
 
 #### Referencias
 
-  * *The C programming language* - Brian W. Kernighan, Dennis M. Ritchie.
-  * *The GNU C Reference Manual*. [link](http://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)
   * Documentación oficial de Matlab. [link](https://www.mathworks.com/help/matlab/index.html)
   * *Matlab Reference Manual*. [link](https://ub.cbm.uam.es/publications/teaching/master_biofisica_2011_2012/MATLAB_REFBOOK.pdf) (*PDF*)
+  * *MATLAB Programming for Engineers* - Stephen J. Chapman
   * *Cornell University MATLAB Programming Virtual Workshop*. [link](https://cvw.cac.cornell.edu/matlab)
   * *Computer Science: an Interdisciplinary Approach* - Robert Sedgewick, Kevin Wayne.
+  * *The C programming language* - Brian W. Kernighan, Dennis M. Ritchie.
+  * *The GNU C Reference Manual*. [link](http://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)
   * *C Recipes: A Problem-Solution Approach* - Shirish Chavan.
+
 
   <div style="page-break-after: always;"></div>
 
@@ -115,22 +117,6 @@ También notar que en C el alcance de una variable es estática y por lo tanto a
 
 > Realice una tabla comparativa permitiendo visualizar las diferencias más relevantes respecto del sistema de tipos de los lenguajes asignados. Justifique las características mencionadas con ejemplos de código (al menos para 3 de las características). ​ *Concepto de Lenguaje fuertemente tipado*
 
-<style type="text/css">
-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
-}
-
-table, th, td {
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px;
-}
-td {
-   width: 25%;
-}
-</style>
 <table>
     <thead>
         <tr>
@@ -229,12 +215,7 @@ c = int32(rn)
 ```
 Varios tipos de datos en MATLAB, esto imprimira:
 ```
-str = Hello World!
-n =  2345
-d =  2345
-un = 790
-rn = 5678.9
-c =  5679
+str = Hello World!, n =  2345, d =  2345, un = 790, rn = 5678.9 y c =  5679
 ```
 Recordar que todos estos tipos son arreglos de 1 elemento, a excepcion de str que es un arreglo de caracteres.
 
@@ -248,14 +229,11 @@ int main()
     int x = 10.0;    // int x
     char y = 'a';  // character c
 
-    // Valor ascii de 'a' es 97
-    x = x + y;
+    x = x + y; // Valor ASCII de 'a' es 97
 
-    // x es convertido implicitamente a float
-    float z = x + 1.0;
+    float z = x + 1.0; // x es convertido implicitamente a float
 
-    // x es convertido explicitamente de int a double
-    double sum = (double)x + 10.0;
+    double sum = (double)x + 10.0; // x es convertido explicitamente de int a double
 
     printf("x = %d, z = %f, sum = %d", x, z, sum);
     return 0;
@@ -267,19 +245,40 @@ Esto imprimira: ```x = 107, z = 108.000000, sum = 118.000000```
 ```
 chr = '37.294e-1';
 
-% conversion explicita de string a valor numerico
-val = str2num(chr)
+val = str2num(chr) // conversion explicita de string a valor numerico
 A = [1.0 2.0 4.0];
 B = 3;
-% conversion implicita de int a double
-A(2) = B;
+A(2) = B; // conversion implicita de int a double
 ```
 Esto imprimira:
- ```
-val =
-
-    3.7294
-A =
-
-    1.0   3.0   4.0
 ```
+val = 3.7294
+A =   1.0   3.0   4.0
+```
+### D.
+> E​nuncie las características más importantes del manejo de excepciones que presentan los lenguajes asignados.
+
+Las excepciones son interrupciones al flujo normal de la ejecucion del programa debido a errores en el codigo.
+
+#### Matlab
+
+Cuando un metodo no puede recuperaarse de un error por su cuenta, se recolecta informacion del error (en detalle mas adelante), crea un objeto de tipo MException y luego lanza la excepcion. Un MException contiene la siguiente informacion del error:
+* **identifier**: string unico que identifica el error mediante el nombre del elemento que causo la excepcion y una regla mnemonica para identificar el tipo de error. El identificador es unico para cada excepcion.
+* **message**: descripcion del error.
+* **stack**: arreglo de estructuras que describen el path a la locacion donde ocurrio el error, el nombre de la funcion, y el numero de linea donde ocurrio.
+* **cause**: informacion sobre excepciones secundarias relacionadas con la principal, en caso de haberlas.
+
+```ME.getReport()``` imprime la informacion del error de manera comprensible.
+El programador puede crear sus propios objetos de excepciones mediante bloques try catch para atrapar errores. Esto permite examinar informacion sobre el error, recolectar aun mas informacion para reportar,tratar de realizar la tarea de alguna otra forma y limpiar comportamiento no deseado causado por el error.
+
+#### C
+
+El manejo del desbordamiento, errores de division y otras condiciones de error dentro de la evaluacion de errores no esta definido por el lenguaje. El trato de las condiciones excepcionales puede ajustarse mediante el uso de funciones no estandar de biblioteca. Estas funciones estan definidas en ```<signal.h> ```, la cual da facilidades para manejar excepciones, tal como señales de interrupcion de una fuente externa o un error durante la ejecucion. Las excepciones se manejan mediante funciones del estilo ```void (* signal(int sig, void (*handler)(int)))(int)```. Si handler es ```SIG_DFL``` se usa el comportamiento definido por la implantacion, si es ```SIG_IGN```, la señal se ignora, de otra manera se llama a la funcion apuntada por el handler, con lor argumentos de tipo señal, las cuales pueden ser, entre otras:
+  * SIGABRT: terminacion anormal.
+  * SIGFPE: error aritmetico, por ej. division por 0 u overflow.
+  * SIGILL: imagen de funcion ilegal, por ej. instruccion ilegal.
+  * SIGTERM: solicitud de terminacion enviada al programa.
+  etc.
+
+Cuando ocurre subsecuentemente una señal sig, la señal se regresa a su comportamiento predeterminado, luego se llama a la funcion manejadora. Si este regresa, la ejecucion continuara donde se encontraba cuando ocurrio la excepcion.
+Para enviar la señal sig al programa se utiliza la funcion ```int raise(int sig)``` la cual devuelve 0 si fue exitoso o cualquier otro valor en caso contrario.
