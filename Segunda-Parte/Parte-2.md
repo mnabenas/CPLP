@@ -282,3 +282,16 @@ El manejo del desbordamiento, errores de division y otras condiciones de error d
 
 Cuando ocurre subsecuentemente una señal sig, la señal se regresa a su comportamiento predeterminado, luego se llama a la funcion manejadora. Si este regresa, la ejecucion continuara donde se encontraba cuando ocurrio la excepcion.
 Para enviar la señal sig al programa se utiliza la funcion ```int raise(int sig)``` la cual devuelve 0 si fue exitoso o cualquier otro valor en caso contrario.
+
+### D.
+> Realice una conclusión exponiendo las diferencias, características, virtudes y defectos de los lenguajes asignados.
+
+C y Matlab son 2 lenguajes sumamente distintos. Desde caracteristicas como su tipado y su ligadura, hasta su manejo de excepciones. Por estas razones son lenguajes que son utilizados para cosas distintas. Si bien los 2 son generalmente utilizados en el ambito cientifico, C tambien es utilizado en la informatica de manera general, lo cual no puede decirse de Matlab.
+
+Matlab esta basado en clases y sigue tendencias de un lenguaje orientado a objetos, C por el contrario es mucho mas funcional.
+A nivel matematico, Matlab maneja arreglos y matrices como ningun otro lenguaje, dado que todo su entorno ronda alrededor de estos elementos. Sin embargo, su alcance a nivel general es bastante limitado o los workarounds para que pueda utilizarse son varios. A pesar de esto, el lenguaje ofrece varios recursos para su utilizacion, desde buena integracion con otros lenguajes como Python y Java, a ventajas como uso de sobrecarga de metodos y polimorfismo, implementacion de inferencia de tipos, buen manejo de excepciones y varios aspectos de modularizacion.
+
+C por otro lado esta preparado para manejar una alta cantidad de problemas variados en tipo de problema y su complejidad gracias a las distintas bibliotecas estandar que posee.
+Al ser un lenguaje tan general pero con altas restricciones por ser fuertemente tipado y estatico, lo hace dificil de entender y la escritura de codigo, si no se realiza con mucho cuidado y prolijidad, puede resultar comprensivamente dificil, ademas de que puede resultar en varios errores que pueden estar o no manejados adecuadamente. Al no poseer procesos automaticos como puede ser la recoleccion de basura , programas en C pueden tambien pueden ser costosos en cuanto a recursos si no son atendidos de manera regular. Sin embargo, por todas sus ventajas es utilizado en la creacion de nuevos sistemas operativos por ser un lenguaje de gran entendimiento con codigo de bajo nivel o codigo maquina.
+
+Los dos lenguajes tienen prioridades distintas. C pone en prioridad la versatilidad del codigo y deja en un segundo plano las ventajas al programador en cuanto a legibilidad y facilidades para el mismo. Matlab por otro lado se centra en el programador y en ofrecer herramientas para facilitar la comprension y el correcto uso del lenguaje en un ambito mas limitado que el de C.
