@@ -289,7 +289,7 @@ Para enviar la señal sig al programa se utiliza la función ```int raise(int si
 
 C y Matlab son 2 lenguajes sumamente distintos. Desde características como su tipado y su ligadura, hasta su manejo de excepciones. Por estas razones son lenguajes que son utilizados para cosas distintas. Si bien los 2 son generalmente utilizados en el ámbito científico, C también es utilizado en la informética de manera general, lo cual no puede decirse de Matlab.
 
-Matlab esta basado en clases y sigue tendencias de un lenguaje orientado a objetos, C por el contrario es mucho mas funciónal.
+Matlab esta basado en clases y sigue tendencias de un lenguaje orientado a objetos, C por el contrario es mucho mas funcional.
 A nivel matematico, Matlab maneja arreglos y matrices como ningún otro lenguaje, dado que todo su entorno ronda alrededor de estos elementos. Sin embargo, su alcance a nivel general es bastante limitado o los workarounds para que pueda utilizarse son varios. A pesar de esto, el lenguaje ofrece varios recursos para su utilización, desde buena integración con otros lenguajes como Python y Java, a ventajas como uso de sobrecarga de métodos y polimorfismo, implementación de inferencia de tipos, buen manejo de excepciones y varios aspectos de modularización.
 
 C por otro lado esta preparado para manejar una alta cantidad de problemas variados en tipo de problema y su complejidad gracias a las distintas bibliotecas estándar que posee.
@@ -300,7 +300,7 @@ Los dos lenguajes tienen prioridades distintas. C pone en prioridad la versatili
 ### F.
 > Realice una conclusión mencionando los aportes que le generó la realización del trabajo como grupo.
 
-Este trabajo nos aporto aprender como funciónan dos lenguajes de los cuales no teníamos muchos conocimientos. Ahora tenemos la certeza de que en la oportunidad de programar en cualquiera de estos lenguajes, lo haremos sabiendo bien sus conceptos sintácticos, semánticos, sus comportamientos y manejos de excepciones; las ventajas y desventajas de dos lenguajes bastante disimilares entre si.
+Este trabajo nos aporto aprender como funcionan dos lenguajes de los cuales no teníamos muchos conocimientos. Ahora tenemos la certeza de que en la oportunidad de programar en cualquiera de estos lenguajes, lo haremos sabiendo bien sus conceptos sintácticos, semánticos, sus comportamientos y manejos de excepciones; las ventajas y desventajas de dos lenguajes bastante disimilares entre si.
 A nivel general tenemos un entendimiento de las distintas cualidades que se necesitan para distintas situaciones, pudiendo identificar a traves de las características de un lenguaje para que tipo de problemas o a que paradigma de programación se acopla mejor.
 En la facultad aun no hemos realizado muchos trabajos en grupo, por lo que nos ayudo a aprender a trabajar con otras personas y organizarnos mejor entre nosotros, desde aprender a escuchar y respetar distintas opiniones y puntos de vista hasta la consolidación de una idea acordada mutuamente mediante el dialogo de como debía realizarse cada parte del proyecto.
 A nivel investigación, el trabajo nos permitió como grupo dividir tareas de investigación y escritura, leyendo distintas referencias bibliográficas y aprendiendo a realizar búsquedas de información en fuentes académicas reconocidas.
