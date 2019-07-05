@@ -150,27 +150,27 @@ Por otro lado la variable pos es un puntero el cual va variando su memoria aloca
             <th colspan=2>Conversion</th>
         </tr>
         <tr>
-          <td>En C la coversion puede ser de 2 tipos: conversion implicita o explicita.
-            <p>En la coversion implicita, la conversion del tipo de origen(derecha del programador) al tipo destino(izquierda del programador) se realiza de manera automatica. Si el rango de destino es mayor al de origen, se denomina conversion ancha, cuando el rango de destino es menor, se denomina conversion estrecha. El compilador realiza conversiones anchas sin ningun problema, pero al realizar conversiones estrechas puede ocurrir perdida de precision (por ejemplo de tipo double a tipo entera se producira un truncamiento.)</p>
-            <p>En la conversion explicita, el programador indica explicitamente el tipo destino de la conversion, se dice que el programador <i>castea</i> a tipo destino. Ejemplos de esto es de double a entero, de char a entero, de entero a apuntador, etc. Es importante notar que, si el casteo se realiza sobre una variable, primero se copia el valor de la variable origen y luego realiza la conversion al tipo destino, para luego asignarlo a la variable destino en caso de haber una, dejando sin modificar el tipo de la variable origen, manteniendo asi su tipado fuerte y estatico.</p></td>
-          <td>Al igual que C, la conversion en MATLAB tambien puede ser explicita o implicita.
-          <p>La conversion implicita se realiza cuando se realiza concatenacion o asignacion suscripta en arreglos, ya que todos sus elementos deben de ser del mismo tipo. En este caso, MATLAB sigue ciertas reglas para entender cual es el tipo destino y cual el origen. En caso de concatenacion, los tipos definidos por el usuario son dominantes sobre predefinidos como double, si no hay prioridad entre los elementos, se utiliza el tipo del dato mas a la izquierda. En caso de asignaciones suscriptas, siempre se utiliza el tipo del dato de la izquierda.</p>
-          <p>La conversion explicita, a diferencia de C, no se realiza con una forma de casteo general (en caso de C <i>(tipoDestino)</i>) sino que hay distintas funciones de casteo para distintos pares de tipos de datos. Ejemplos de esto es <code>cellstr int2str bin2dec array2table</code>, etc. Esto permite muchos mas casos explicitos que los provistos mediante casteo explicito en C donde muchas conversiones explicitas no se encuentran definidas.</p></td>
+          <td>En C la coversión puede ser de 2 tipos: conversión implícita o explicita.
+            <p>En la coversión implícita, la conversión del tipo de origen(derecha del programador) al tipo destino(izquierda del programador) se realiza de manera automática. Si el rango de destino es mayor al de origen, se denomina conversion ancha, cuando el rango de destino es menor, se denomina conversión estrecha. El compilador realiza conversiones anchas sin ningún problema, pero al realizar conversiones estrechas puede ocurrir perdida de precisión (por ejemplo de tipo double a tipo entera se producirá un truncamiento.)</p>
+            <p>En la conversión explicita, el programador indica explícitamente el tipo destino de la conversión, se dice que el programador <i>castea</i> a tipo destino. Ejemplos de esto es de double a entero, de char a entero, de entero a apuntador, etc. Es importante notar que, si el casteo se realiza sobre una variable, primero se copia el valor de la variable origen y luego realiza la conversión al tipo destino, para luego asignarlo a la variable destino en caso de haber una, dejando sin modificar el tipo de la variable origen, manteniendo así su tipado fuerte y estático.</p></td>
+          <td>Al igual que C, la conversión en MATLAB también puede ser explicita o implicita.
+          <p>La conversión implícita se realiza cuando se realiza concatenación o asignación suscripta en arreglos, ya que todos sus elementos deben de ser del mismo tipo. En este caso, MATLAB sigue ciertas reglas para entender cual es el tipo destino y cual el origen. En caso de concatenación, los tipos definidos por el usuario son dominantes sobre predefinidos como double, si no hay prioridad entre los elementos, se utiliza el tipo del dato mas a la izquierda. En caso de asignaciones suscriptas, siempre se utiliza el tipo del dato de la izquierda.</p>
+          <p>La conversión explicita, a diferencia de C, no se realiza con una forma de casteo general (en caso de C <i>(tipoDestino)</i>) sino que hay distintas funciones de casteo para distintos pares de tipos de datos. Ejemplos de esto es <code>cellstr int2str bin2dec array2table</code>, etc. Esto permite muchos mas casos explícitos que los provistos mediante casteo explicito en C donde muchas conversiones explicitas no se encuentran definidas.</p></td>
         </tr>
         <tr>
             <th colspan=2>Inferencia de Tipo</th>
         </tr>
         <tr>
-            <td><p>C no permite inferencia de tipos debido a que siempre debe estar definido el tipo de un variable. La inferencia de tipos se refiere a la posibilidad de lenguajes de detectar o inferir el tipo de una variable o funcion analizando su contexto, y esto no es posible en C. Lo es en lenguajes derivados como C++ o C# gracias a variables de tipo var o auto.</td>
-            <td>En MATLAB la inferencia de tipo es algo constantemente presente. Cuando declaramos una funcion por ejemplo, nunca se expresa el tipo de retorno o el tipo de los argumentos que esa funcion recibe, sin embargo el lenguaje puede inferir el resultado de esa funcion. Difiere de la conversion implicita en que justamente no se utilizan los tipos de argumentos de los argumentos para saber el tipo de la funcion. Al ser MATLAB dinamico, tambien complica la distincion entre ambas, la inferencia es mas distintiva en lenguajes estaticos.</p>
-            <p>La inferencia tiene sus desventajas, sin embargo. Desde la posibilidad de que haya errores en la inferencia y la dificultad de encontrar dichos errores, hasta la falta de comprension de lo que se esta haciendo en una funcion dependiendo de sus argumentos.</p></td>
+            <td><p>C no permite inferencia de tipos debido a que siempre debe estar definido el tipo de un variable. La inferencia de tipos se refiere a la posibilidad de lenguajes de detectar o inferir el tipo de una variable o función analizando su contexto, y esto no es posible en C. Lo es en lenguajes derivados como C++ o C# gracias a variables de tipo var o auto.</td>
+            <td>En MATLAB la inferencia de tipo es algo constantemente presente. Cuando declaramos una función por ejemplo, nunca se expresa el tipo de retorno o el tipo de los argumentos que esa función recibe, sin embargo el lenguaje puede inferir el resultado de esa función. Difiere de la conversión implícita en que justamente no se utilizan los tipos de argumentos de los argumentos para saber el tipo de la función. Al ser MATLAB dinámico, también complica la distinción entre ambas, la inferencia es mas distintiva en lenguajes estáticos.</p>
+            <p>La inferencia tiene sus desventajas, sin embargo. Desde la posibilidad de que haya errores en la inferencia y la dificultad de encontrar dichos errores, hasta la falta de comprensión de lo que se esta haciendo en una función dependiendo de sus argumentos.</p></td>
         </tr>
         <tr>
             <th colspan=2>Polimorfismo</th>
         </tr>
         <tr>
             <td>Si bien C no soporta polimorfismo de manera directa, hay ciertas formas de simular polimorfismo en C mediante punteros a funciones y macros.</td>
-            <td>MATLAB por otro lado si soporta polimorfismo. Utiliza clases de tipo abstractas para poder sobrecargar funcionalidades y heredar caracteristicas en comun para grupos de objetos. Tambien se puede realizar sobrecarga de funciones directamente mediante la definicion de funciones con la misma definicion pero distintas implementaciones.</td>
+            <td>MATLAB por otro lado si soporta polimorfismo. Utiliza clases de tipo abstractas para poder sobrecargar funcionalidades y heredar características en común para grupos de objetos. También se puede realizar sobrecarga de funciones directamente mediante la definición de funciones con la misma definición pero distintas implementaciones.</td>
         </tr>
     </tbody>
 </table>
@@ -187,7 +187,7 @@ int main() {
   return 0;
 }
 ```
-Notese como en cada variable, incluso la funcion ```main()```, se encuentra expresado su tipo.
+Nótese como en cada variable, incluso la funcion ```main()```, se encuentra expresado su tipo.
 
 ```
 function avg = average(nums)
@@ -204,7 +204,7 @@ void imprimir(const char *str){
   printf("%s",str);
 }
 ```
-Aqui podemos ver varios ejemplos de tipos de datos en C, desde string que es una cadena de caracteres, hasta el tipo void  de la funcion y puntero a la cadena str.
+Aquí podemos ver varios ejemplos de tipos de datos en C, desde string que es una cadena de caracteres, hasta el tipo void  de la función y puntero a la cadena str.
 
 ```
 str = 'Hello World!'
@@ -214,11 +214,11 @@ un = uint32(789.50)
 rn = 5678.92347
 c = int32(rn)
 ```
-Varios tipos de datos en MATLAB, esto imprimira:
+Varios tipos de datos en MATLAB, esto imprimirá:
 ```
 str = Hello World!, n =  2345, d =  2345, un = 790, rn = 5678.9 y c =  5679
 ```
-Recordar que todos estos tipos son arreglos de 1 elemento, a excepcion de str que es un arreglo de caracteres.
+Recordar que todos estos tipos son arreglos de 1 elemento, a excepción de str que es un arreglo de caracteres.
 
 **Conversion**
 
@@ -259,43 +259,48 @@ A =   1.0   3.0   4.0
 ### D.
 > E​nuncie las características más importantes del manejo de excepciones que presentan los lenguajes asignados.
 
-Las excepciones son interrupciones al flujo normal de la ejecucion del programa debido a errores en el codigo.
+Las excepciones son interrupciones al flujo normal de la ejecución del programa debido a errores en el código.
 
 #### Matlab
 
-Cuando un metodo no puede recuperaarse de un error por su cuenta, se recolecta informacion del error (en detalle mas adelante), crea un objeto de tipo MException y luego lanza la excepcion. Un MException contiene la siguiente informacion del error:
-* **identifier**: string unico que identifica el error mediante el nombre del elemento que causo la excepcion y una regla mnemonica para identificar el tipo de error. El identificador es unico para cada excepcion.
-* **message**: descripcion del error.
-* **stack**: arreglo de estructuras que describen el path a la locacion donde ocurrio el error, el nombre de la funcion, y el numero de linea donde ocurrio.
-* **cause**: informacion sobre excepciones secundarias relacionadas con la principal, en caso de haberlas.
+Cuando un método no puede recuperarse de un error por su cuenta, se recolecta información del error (en detalle mas adelante), crea un objeto de tipo MException y luego lanza la excepción. Un MException contiene la siguiente informacion del error:
+* **identifier**: string único que identifica el error mediante el nombre del elemento que causo la excepción y una regla mnemonica para identificar el tipo de error. El identificador es unico para cada excepción.
+* **message**: descripción del error.
+* **stack**: arreglo de estructuras que describen el path a la locación donde ocurrio el error, el nombre de la función, y el numero de linea donde ocurrió.
+* **cause**: información sobre excepciones secundarias relacionadas con la principal, en caso de haberlas.
 
-```ME.getReport()``` imprime la informacion del error de manera comprensible.
-El programador puede crear sus propios objetos de excepciones mediante bloques try catch para atrapar errores. Esto permite examinar informacion sobre el error, recolectar aun mas informacion para reportar,tratar de realizar la tarea de alguna otra forma y limpiar comportamiento no deseado causado por el error.
+```ME.getReport()``` imprime la información del error de manera comprensible.
+El programador puede crear sus propios objetos de excepciones mediante bloques try catch para atrapar errores. Esto permite examinar información sobre el error, recolectar aun mas información para reportar,tratar de realizar la tarea de alguna otra forma y limpiar comportamiento no deseado causado por el error.
 
 #### C
 
-El manejo del desbordamiento, errores de division y otras condiciones de error dentro de la evaluacion de errores no esta definido por el lenguaje. El trato de las condiciones excepcionales puede ajustarse mediante el uso de funciones no estandar de biblioteca. Estas funciones estan definidas en ```<signal.h> ```, la cual da facilidades para manejar excepciones, tal como señales de interrupcion de una fuente externa o un error durante la ejecucion. Las excepciones se manejan mediante funciones del estilo ```void (* signal(int sig, void (*handler)(int)))(int)```. Si handler es ```SIG_DFL``` se usa el comportamiento definido por la implantacion, si es ```SIG_IGN```, la señal se ignora, de otra manera se llama a la funcion apuntada por el handler, con lor argumentos de tipo señal, las cuales pueden ser, entre otras:
-  * SIGABRT: terminacion anormal.
-  * SIGFPE: error aritmetico, por ej. division por 0 u overflow.
-  * SIGILL: imagen de funcion ilegal, por ej. instruccion ilegal.
-  * SIGTERM: solicitud de terminacion enviada al programa.
+El manejo del desbordamiento, errores de división y otras condiciones de error dentro de la evaluación de errores no esta definido por el lenguaje. El trato de las condiciones excepcionales puede ajustarse mediante el uso de funciones no estándar de biblioteca. Estas funciones están definidas en ```<signal.h> ```, la cual da facilidades para manejar excepciones, tal como señales de interrupción de una fuente externa o un error durante la ejecución. Las excepciones se manejan mediante funciones del estilo ```void (* signal(int sig, void (*handler)(int)))(int)```. Si handler es ```SIG_DFL``` se usa el comportamiento definido por la implantacion, si es ```SIG_IGN```, la señal se ignora, de otra manera se llama a la funcion apuntada por el handler, con los argumentos de tipo señal, las cuales pueden ser, entre otras:
+  * SIGABRT: terminación anormal.
+  * SIGFPE: error aritmetico, por ej. división por 0 u overflow.
+  * SIGILL: imagen de función ilegal, por ej. instrucción ilegal.
+  * SIGTERM: solicitud de terminación enviada al programa.
   etc.
 
-Cuando ocurre subsecuentemente una señal sig, la señal se regresa a su comportamiento predeterminado, luego se llama a la funcion manejadora. Si este regresa, la ejecucion continuara donde se encontraba cuando ocurrio la excepcion.
+Cuando ocurre subsecuentemente una señal sig, la señal se regresa a su comportamiento predeterminado, luego se llama a la función manejadora. Si este regresa, la ejecución continuara donde se encontraba cuando ocurrio la excepción.
 Para enviar la señal sig al programa se utiliza la funcion ```int raise(int sig)``` la cual devuelve 0 si fue exitoso o cualquier otro valor en caso contrario.
 
 ### E.
 > Realice una conclusión exponiendo las diferencias, características, virtudes y defectos de los lenguajes asignados.
 
-C y Matlab son 2 lenguajes sumamente distintos. Desde caracteristicas como su tipado y su ligadura, hasta su manejo de excepciones. Por estas razones son lenguajes que son utilizados para cosas distintas. Si bien los 2 son generalmente utilizados en el ambito cientifico, C tambien es utilizado en la informatica de manera general, lo cual no puede decirse de Matlab.
+C y Matlab son 2 lenguajes sumamente distintos. Desde características como su tipado y su ligadura, hasta su manejo de excepciones. Por estas razones son lenguajes que son utilizados para cosas distintas. Si bien los 2 son generalmente utilizados en el ámbito científico, C también es utilizado en la informética de manera general, lo cual no puede decirse de Matlab.
 
 Matlab esta basado en clases y sigue tendencias de un lenguaje orientado a objetos, C por el contrario es mucho mas funcional.
-A nivel matematico, Matlab maneja arreglos y matrices como ningun otro lenguaje, dado que todo su entorno ronda alrededor de estos elementos. Sin embargo, su alcance a nivel general es bastante limitado o los workarounds para que pueda utilizarse son varios. A pesar de esto, el lenguaje ofrece varios recursos para su utilizacion, desde buena integracion con otros lenguajes como Python y Java, a ventajas como uso de sobrecarga de metodos y polimorfismo, implementacion de inferencia de tipos, buen manejo de excepciones y varios aspectos de modularizacion.
+A nivel matematico, Matlab maneja arreglos y matrices como ningún otro lenguaje, dado que todo su entorno ronda alrededor de estos elementos. Sin embargo, su alcance a nivel general es bastante limitado o los workarounds para que pueda utilizarse son varios. A pesar de esto, el lenguaje ofrece varios recursos para su utilización, desde buena integración con otros lenguajes como Python y Java, a ventajas como uso de sobrecarga de métodos y polimorfismo, implementacion de inferencia de tipos, buen manejo de excepciones y varios aspectos de modularización.
 
-C por otro lado esta preparado para manejar una alta cantidad de problemas variados en tipo de problema y su complejidad gracias a las distintas bibliotecas estandar que posee.
-Al ser un lenguaje tan general pero con altas restricciones por ser fuertemente tipado y estatico, lo hace dificil de entender y la escritura de codigo, si no se realiza con mucho cuidado y prolijidad, puede resultar comprensivamente dificil, ademas de que puede resultar en varios errores que pueden estar o no manejados adecuadamente. Al no poseer procesos automaticos como puede ser la recoleccion de basura , programas en C pueden tambien pueden ser costosos en cuanto a recursos si no son atendidos de manera regular. Sin embargo, por todas sus ventajas es utilizado en la creacion de nuevos sistemas operativos por ser un lenguaje de gran entendimiento con codigo de bajo nivel o codigo maquina.
+C por otro lado esta preparado para manejar una alta cantidad de problemas variados en tipo de problema y su complejidad gracias a las distintas bibliotecas estándar que posee.
+Al ser un lenguaje tan general pero con altas restricciones por ser fuertemente tipado y estático, lo hace difícil de entender y la escritura de código, si no se realiza con mucho cuidado y prolijidad, puede resultar comprensivamente difícil, ademas de que puede resultar en varios errores que pueden estar o no manejados adecuadamente. Al no poseer procesos automáticos como puede ser la recolección de basura , programas en C pueden también pueden ser costosos en cuanto a recursos si no son atendidos de manera regular. Sin embargo, por todas sus ventajas es utilizado en la creación de nuevos sistemas operativos por ser un lenguaje de gran entendimiento con codigo de bajo nivel o codigo maquina.
 
-Los dos lenguajes tienen prioridades distintas. C pone en prioridad la versatilidad del codigo y deja en un segundo plano las ventajas al programador en cuanto a legibilidad y facilidades para el mismo. Matlab por otro lado se centra en el programador y en ofrecer herramientas para facilitar la comprension y el correcto uso del lenguaje en un ambito mas limitado que el de C.
+Los dos lenguajes tienen prioridades distintas. C pone en prioridad la versatilidad del código y deja en un segundo plano las ventajas al programador en cuanto a legibilidad y facilidades para el mismo. Matlab por otro lado se centra en el programador y en ofrecer herramientas para facilitar la comprensión y el correcto uso del lenguaje en un ámbito mas limitado que el de C.
 
 ### F.
 > Realice una conclusión mencionando los aportes que le generó la realización del trabajo como grupo.
+
+Este trabajo nos aporto aprender como funcionan dos lenguajes de los cuales no teníamos muchos conocimientos. Ahora tenemos la certeza de que en la oportunidad de programar en cualquiera de estos lenguajes, lo haremos sabiendo bien sus conceptos sintácticos, semánticos, sus comportamientos y manejos de excepciones; las ventajas y desventajas de dos lenguajes bastante disimilares entre si.
+A nivel general tenemos un entendimiento de las distintas cualidades que se necesitan para distintas situaciones, pudiendo identificar a traves de las características de un lenguaje para que tipo de problemas o a que paradigma de programación se acopla mejor.
+En la facultad aun no hemos realizado muchos trabajos en grupo, por lo que nos ayudo a aprender a trabajar con otras personas y organizarnos mejor entre nosotros, desde aprender a escuchar y respetar distintas opiniones y puntos de vista hasta la consolidación de una idea acordada mutuamente mediante el dialogo de como debía realizarse cada parte del proyecto.
+A nivel investigación, el trabajo nos permitió como grupo dividir tareas de investigación y escritura, leyendo distintas referencias bibliográficas y aprendiendo a realizar búsquedas de información en fuentes académicas reconocidas.
